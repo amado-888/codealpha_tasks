@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Age calculator
+    </title>
+</head>
+
+<body>
+    <h1>Age calculator</h1>
+    <div>
+        <input type="date" id="date_of_birth">
+        <button onclick="calc_age()">Calculate</button>
+        <p id="answer"></p>
+    </div>
+    <script>
+        let user_input = document.getElementById("date_of_birth");
+        user_input.max = new Date().toISOString().split("T")[0];
+        let answer = document.getElementById("answer");
+        let calc_age = () => {
+            let birthDate = new Date(user_input.value)
+            let dayOfBirth = birthDate.getDay();
+            let monthOfBirth = birthDate.getMonth() + 1;
+            let yearOfBirth = birthDate.getFullYear();
+
+            let nowDate = new Date()
+            let day = nowDate.getDay();
+            let month = nowDate.getMonth() + 1;
+            let year = nowDate.getFullYear();
+
+            let age_day, age_month, age_year
+            age_year = year - yearOfBirth
+            if (month >= monthOfBirth) {
+                age_month = month - monthOfBirth
+            } else {
+                age_year--
+                age_month = 12 + (month - monthOfBirth)
+            }
+            if (day >= dayOfBirth) {
+                age_day = day - dayOfBirth
+            } else {
+                age_month--
+                age_day = getExactDays(yearOfBirth, monthOfBirth) + day - dayOfBirth
+            }
+            if (age_month < 0) {
+                age_month = 12
+                age_year--
+
+            }
+            answer.innerHTML = `Your cuurent age is ${age_year} year(s), ${age_month} month(s) and ${age_day} day(s)`
+        }
+
+
+        function getExactDays(y, m) {
+            return new Date(y, m, 0).getDate()
+        }
+
+    </script>
+</body>
+
+</html>
