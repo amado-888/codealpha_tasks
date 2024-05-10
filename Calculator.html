@@ -5,13 +5,14 @@
     <title>
         Age calculator
     </title>
+    <link rel="stylesheet" href="calc.css">
 </head>
 
 <body>
     <h1>Age calculator</h1>
-    <div>
+    <div class="main">
         <input type="date" id="date_of_birth">
-        <button onclick="calc_age()">Calculate</button>
+        <button onclick="calc_age()" >Calculate</button>
         <p id="answer"></p>
     </div>
     <script>
@@ -20,12 +21,12 @@
         let answer = document.getElementById("answer");
         let calc_age = () => {
             let birthDate = new Date(user_input.value)
-            let dayOfBirth = birthDate.getDay();
+            let dayOfBirth = birthDate.getDate();
             let monthOfBirth = birthDate.getMonth() + 1;
             let yearOfBirth = birthDate.getFullYear();
 
             let nowDate = new Date()
-            let day = nowDate.getDay();
+            let day = nowDate.getDate();
             let month = nowDate.getMonth() + 1;
             let year = nowDate.getFullYear();
 
@@ -41,7 +42,8 @@
                 age_day = day - dayOfBirth
             } else {
                 age_month--
-                age_day = getExactDays(yearOfBirth, monthOfBirth) + day - dayOfBirth
+                let last_day= get_numofdays_in_a_month(yearOfBirth, monthOfBirth)
+                age_day = last_day + (day - dayOfBirth)
             }
             if (age_month < 0) {
                 age_month = 12
@@ -52,7 +54,7 @@
         }
 
 
-        function getExactDays(y, m) {
+        function get_numofdays_in_a_month(y, m) {
             return new Date(y, m, 0).getDate()
         }
 

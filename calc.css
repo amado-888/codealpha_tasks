@@ -1,0 +1,48 @@
+
+body{
+    background-image: linear-gradient(to right,#4D869C,#CDE8E5);
+}
+h1{
+    color: #EADBC8;
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 50px;
+    position: relative;
+    top: 290px;
+    left:200px;
+    width: 400px;
+
+}
+.main{
+    position: relative;
+    top: 290px;
+    left: 300px;
+    width: 400px;
+}
+button{
+    border-radius: 10px;
+    background-color: yellow;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+
+}
+#date_of_birth{
+    border-radius: 10px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+p{
+    font-size: 30px;
+    font-family: Arial;
+
+
+}
+
+
+
